@@ -1,0 +1,50 @@
+.container.contact_container{
+    display: grid;
+    /* flex-direction: column; */
+    gap: 1.2rem;
+    position: relative;
+    left: 27%;
+}
+
+.contact_options{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.contact_option{
+    background: radial-gradient(rgb(88 9 9), transparent);
+    border-radius: 1.2rem;
+    text-align: center;
+    width: 300px;
+    border:1px solid transparent;
+    transition: var(--transition);
+}
+
+.contact_option:hover{
+    background: radial-gradient(rgb(211 106 106), transparent);
+}
+.contact_option_icon{
+    font-size: 1.5rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0.5rem;
+}
+.contact_option a{
+    margin-top: 0.7rem;
+    display: inline-block;
+    font-size: 0.8rem;
+    color: red;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+input,textarea{
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background: transparent;
+    border: 2px solid rgb(211 106 106);
+    resize: none;
+    color: white;
+}

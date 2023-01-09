@@ -1,0 +1,71 @@
+:root{
+    --color-primary-variant:#FFE4C0;
+}
+header{
+    height: 100vh;
+    padding-top: 7rem;
+    overflow: hidden;
+
+}
+.cta_main{
+    margin-top: -1rem;
+}
+.header__container{
+    text-align: center;
+    position: relative;
+    height: 100%;
+}
+
+/*=====================CTA======================*/
+.cta{
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/*=====================Socials======================*/
+.header__socials{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2 rem;
+    position: absolute;
+    left: 3rem;
+    bottom: 3rem;
+}
+
+.header__socials::after{
+    
+    content: "";
+    width: 1px;
+    height: 2px;
+    background-color: var(--color-primary-variant);
+}
+#social{
+    color: var(--color-primary-variant);
+}
+
+.scroll_down{
+    color: var(--color-primary-variant);
+    display: flex;
+    flex-direction: column;
+    font-weight: 200;
+    font-size: 0.9rem;
+    align-items: center;
+    gap: 2 rem;
+    position: absolute;
+    right: 3rem;
+    bottom: 3rem;
+    rotate: 90deg;
+}
+#profile-image{
+    
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    margin-bottom: 2rem;
+    object-fit: cover;
+    box-shadow: 5px 0px 10px #fff;
+}
