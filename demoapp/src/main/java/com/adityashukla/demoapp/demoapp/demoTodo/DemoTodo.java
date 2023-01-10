@@ -2,9 +2,14 @@ package com.adityashukla.demoapp.demoapp.demoTodo;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
-
+@Entity
 public class DemoTodo {
+	@Id
+	@GeneratedValue
 	private long id;
 	private String username;
 	@Size(min = 5,message = "Please enter a better description")
@@ -15,6 +20,9 @@ public class DemoTodo {
 	public String toString() {
 		return "demoTodo [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
 				+ targetDate + ", done=" + done + "]";
+	}
+	public DemoTodo() {
+		
 	}
 	public DemoTodo(long id, String username, String description, LocalDate targetDate, boolean done) {
 		super();

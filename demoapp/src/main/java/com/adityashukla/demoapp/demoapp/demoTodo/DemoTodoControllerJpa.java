@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
 
-//@Controller
+@Controller
 @SessionAttributes("name")
-public class DemoTodoController {
-	private DemoTodoService demoTodoService;
+public class DemoTodoControllerJpa {
+	private TodoRepository repository;
 
-	public DemoTodoController(DemoTodoService demoTodoService) {
+	public DemoTodoControllerJpa(TodoRepository repository) {
 		super();
-		this.demoTodoService = demoTodoService;
+		this.repository=repository;
 	}
 
 	@RequestMapping("demotodos")
 	public String getDemoTodos(ModelMap model) {
 		String username = getLoggedInUser();
-		List<DemoTodo> todos =demoTodoService.findByUsername(username);
+		List<DemoTodo> todos =repository.findByUsername(username);
 		model.addAttribute("todos",todos);
 		return "demoListTodos";
 	}
@@ -50,17 +50,16 @@ public class DemoTodoController {
 			
 			return "redirect:add-Todo";
 		}
-		String username= getLoggedInUser();;
-		
-		demoTodoService.addTodo(0,username, demotodo.getDescription(), demotodo.getTargetDate(), false);
+		String username= getLoggedInUser();
+		demotodo.setUsername(username);
+		repository.save(demotodo);
 		return "redirect:demotodos";
 	}
 	@RequestMapping(value="delete-todo",method = RequestMethod.GET)
 	public String deleteDemoTodo(@RequestParam Long id, ModelMap model,@Valid DemoTodo todo,BindingResult result) {
 		
 		String username=getLoggedInUser();;
-		
-		demoTodoService.deleteTodo(id);;
+		repository.deleteById(id);
 		return "redirect:demotodos";
 	}
 	@RequestMapping(value="update-todo",method = RequestMethod.GET)
@@ -68,7 +67,7 @@ public class DemoTodoController {
 		
 		String username=getLoggedInUser();
 		
-		DemoTodo todo=demoTodoService.findTodoById(id);
+		DemoTodo todo=repository.findById(id).get();
 		model.put("todo", todo);
 		return "addTodo";
 	}
@@ -82,7 +81,7 @@ public class DemoTodoController {
 		String username=getLoggedInUser();
 		todo.setUsername(username);
 		todo.setTargetDate(LocalDate.now().plusYears(1));;
-		demoTodoService.updateTodo(todo);
+		repository.save(todo);
 		return "redirect:demotodos";
 	}
 }

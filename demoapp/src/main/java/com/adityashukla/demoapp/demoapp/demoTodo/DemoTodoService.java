@@ -20,7 +20,8 @@ public class DemoTodoService {
 	}
 
 	public List<DemoTodo> findByUsername(String username){
-		return todos;
+		Predicate<? super DemoTodo> predicate = todos-> todos.getUsername().equalsIgnoreCase(username);
+		return todos.stream().filter(predicate).toList();
 	}
 	public void addTodo(long id, String username, String description , LocalDate targetDate,boolean done) {
 		DemoTodo todo = new DemoTodo(++todosCount,username,description,targetDate,done);

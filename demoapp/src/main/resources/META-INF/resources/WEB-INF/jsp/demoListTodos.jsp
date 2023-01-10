@@ -10,12 +10,13 @@
     
 </head>
 <body>
+    <%@ include file="common/navigation.jspf" %>
     <div class="container">
     <h1>Demo Todos List</h1><br>
     <table  class="table">
         <thead>
             <tr>
-            <th>Todo Id</th>
+            <!-- <th>Todo Id</th> -->
             <th>Username</th>
             <th>Description</th>
             <th>Target Date</th>
@@ -25,13 +26,13 @@
         <tbody>
             <c:forEach items="${todos}" var="todo">
                 <tr>
-                    <td>${todo.id}</td>
+                    <!-- <td>${todo.id}</td> -->
                     <td>${todo.username}</td>
                     <td>${todo.description}</td>
                     <td>${todo.targetDate}</td>
                     <td>${todo.done}</td>
-                    <td><a href="delete-todo?id=${todo.id}" class="btn btn-danger">Delete Todo ${todo.id}</a></td>
-                    <td><a href="update-todo?id=${todo.id}" class="btn btn-info">Update Todo ${todo.id}</a></td>
+                    <td><a href="delete-todo?id=${todo.id}" class="btn btn-danger">Delete Todo </a></td>
+                    <td><a href="update-todo?id=${todo.id}" class="btn btn-info">Update Todo </a></td>
                 </tr>
             </c:forEach>
         </tbody>
