@@ -2,8 +2,15 @@ package com.adityashukla.demoapp.demoapp.demoTodo;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.Size;
+
 public class DemoTodo {
 	private long id;
+	private String username;
+	@Size(min = 5,message = "Please enter a better description")
+	private String description;
+	private LocalDate targetDate;
+	private boolean done;
 	@Override
 	public String toString() {
 		return "demoTodo [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
@@ -47,8 +54,5 @@ public class DemoTodo {
 	public void setDone(boolean done) {
 		this.done = done;
 	}
-	private String username;
-	private String description;
-	private LocalDate targetDate;
-	private boolean done;
+	
 }

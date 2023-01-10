@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +13,16 @@
 <body>
     <div class="container">
     <h1>Add Todo</h1><br>
-     <form class="form" method="post"> 
-        <!-- Id: <input type="number" name="id"><br>
-        Username: <input type="text" name="username"><br> -->
-        Description: <input type="text" name="description" required><br> 
-        <!-- Target Date: <input type="date" name="targetdate"><br>
-        Done ? : <input type="text" name="done"><br> -->
-        <input type="submit" class="btn btn-success">
-    </form>
+     <form:form class="form" method="post" modelAttribute="todo"> 
+        
+        <form:input type="hidden" path="id" /><br>
+        <!--<input type="text" name="username"/><br> -->
+        Description: <form:input type="text" path="description" required="required"/><br> 
+        <form:errors path="description" cssClass="text-warning"/><br>
+        <!-- Target Date: <input type="date" name="targetdate"><br>-->
+        <form:input type="hidden" path="done"/><br> 
+        <input type="submit" class="btn btn-success"/>
+    </form:form>
     
     </div>
     <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
